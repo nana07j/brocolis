@@ -1,19 +1,23 @@
-criarCartao(categoria, pergunta, resposta) {
-
-}
 function CriarCartao(categoria, pergunta, resposta) {
    let container = document.getElementById('container')
    let cartao = document.createElement('article')
    cartao.className = 'cartao'
 }
 cartao.innerHTML =
-`<div class="cartao_conteudo"></div>
-<h3>Programação</h3>
+`<div class="cartao_conteudo">
+<h3>${categoria}</h3>
 <div class="cartao_conteudo_pergunta">
-    <p></p>O que é JavaScript?</p>
+<p>${pergunta}</p>
 </div>
 <div class="cartao_conteudo_resposta">
-    <p>O JavaScript é uma linguagem da programação</p>
+<p>${resposta}</p>
+</div>
     </div>
-    </div>`
-    CSSContainerRule.appenChild(cartao)
+    `
+    let respostaEstaVisivel = false
+    function viraCartao () {
+        respostaEstaVisivel = !respostaEstaVisivel
+        cartao.classList.toogle('active',respostaEstaVisivel)
+    }
+    cartao.addEventListener('click', viraCartao)
+    container.appenChild(cartao)
